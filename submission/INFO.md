@@ -7,18 +7,18 @@
 
 ## Lab Execution Summary
 
-All required steps completed successfully:
+All required steps completed successfully (lightweight path):
 
-1. ✅ `make setup` - Environment setup and notebook generation from Jupytext
-2. ✅ `make smoke` - All 9 offline checks passed
-3. ✅ `make data` - Generated 200,000 Bronze rows with seeded duplicates
-4. ✅ `make data-ai` - Generated multimodal corpus, blobs, and agent traces
-5. ✅ `make test` - All 24 pytest tests passed
-6. ✅ `make run-all` - All 8 notebooks executed successfully (8/8 passed in ~14s)
+1. ✅ `make setup` / manual: created venv, installed deps, generated notebooks from Jupytext
+2. ✅ `make smoke` / `python scripts/verify_lite.py` - all 9 offline checks passed
+3. ✅ `make data` / `python scripts/generate_data_lite.py` - generated 200,000 Bronze rows
+4. ✅ `make data-ai` / `python scripts/generate_ai_data.py` - generated multimodal corpus, blobs, traces
+5. ✅ `make test` / `pytest -q` - all 24 pytest tests passed
+6. ✅ `make run-all` / `python scripts/run_all.py` - all 8 notebooks passed (8/8)
 
 ## Execution Environment
 
-- Platform: Linux
-- Python: 3.10+ (in virtual environment)
-- Data format: Delta Lake (delta-rs 1.x) + Apache Iceberg (pyiceberg) + DuckDB + Polars
-- Execution path: Lightweight (offline, no JVM required)
+- **OS:** Linux (workspace)
+- **Python:** 3.11 (in local `.venv/`)
+- **Path:** Lightweight (delta-rs 1.x, pyiceberg, DuckDB, Polars; offline, no JVM)
+- **Notebooks:** 8 lightweight notebooks executed with outputs preserved in `submission/notebooks/`
